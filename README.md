@@ -1,8 +1,62 @@
-# React + Vite
+# Synapse AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Synapse AI app helps students in study**
 
-Currently, two official plugins are available:
+## Installation for fist time
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone this repository**
+
+```sh
+git clone https://github.com/riteshgharat/synapse.git
+```
+
+2. **Change directory**
+
+```sh
+cd synapse
+```
+
+3. **Install Vite+React**
+
+```sh
+npm install
+```
+
+4. **Run project**
+
+```sh
+npm run dev
+```
+
+## After making changes in project update repo
+
+### Step-by-Step Guide
+
+1. **Pulling latest file from Github**:
+
+```sh
+git checkout develop
+git pull origin develop
+```
+
+2. **Develop and Commit**:
+Work on the develop branch, making commits as needed.
+**Try adding comments after every minor chnages, like after completing navbar...**
+```sh
+git add .
+git commit -m "Description of the changes"
+```
+
+3. **Push Feature Branch to Remote**:
+Push the develop branch to the remote repository.
+
+```sh
+git push origin develop
+```
+
+4. **Update Develop Branch Locally**:
+After merging the PR, all developers should update their local develop branch.
+```sh
+git checkout develop
+git pull origin develop
+```
