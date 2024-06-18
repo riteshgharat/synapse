@@ -1,4 +1,5 @@
 # Synapse AI
+<<<<<<< HEAD
 
 **Synapse AI app helps students in study**
 
@@ -60,3 +61,6 @@ After merging the PR, all developers should update their local develop branch.
 git checkout develop
 git pull origin develop
 ```
+=======
+**Synapse AI app helps students in study**
+>>>>>>> ee63d799d52bddc7dc302924a99aae83a702881e
