@@ -1,0 +1,20 @@
+.input {
+  background: red;
+}
+
+.search-box {
+  width: 55rem;
+  height: 3.125rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.search-box input{
+    
+}
+
+.search-box img {
+  width: 1.875rem;
+  height: 1.875rem;
+  flex-shrink: 0;
+}
