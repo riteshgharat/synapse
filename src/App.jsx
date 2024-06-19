@@ -11,12 +11,12 @@ function App() {
 
   return (
     <>
-      <VerticalNavbar/>
-      <SubNavbar/>
+      <VerticalNavbar />
+      <SubNavbar />
       <div className="wd-auto flex">
-        <TopNavbar/>
-        <LearningSession/>
-        <InputBar/>
+        <TopNavbar />
+        <LearningSession />
+        <InputBar />
       </div>
     </>
   );

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function TopNavbar() {
-  return (
-    <div className='bg-yellow-500'>TopNavbar</div>
-  )
+  return <div className="bg-yellow-500">TopNavbar</div>;
 }
 
-export default TopNavbar
+export default TopNavbar;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function LearningSession() {
-  return (
-    <div className='bg-green-500'>LearningSession</div>
-  )
+  return <div className="bg-green-500">LearningSession</div>;
 }
 
-export default LearningSession
+export default LearningSession;
