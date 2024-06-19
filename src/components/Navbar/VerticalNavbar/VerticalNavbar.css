@@ -1,0 +1,11 @@
+.vertical-navbar{
+    width: 60px;
+    height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+    .vertical-navbar {
+        width: 100%;
+        height: 50px;
+    }
+}

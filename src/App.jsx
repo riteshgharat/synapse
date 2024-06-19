@@ -13,7 +13,7 @@ function App() {
     <>
       <VerticalNavbar />
       <SubNavbar />
-      <div className="wd-auto flex">
+      <div className="flex flex-grow flex-col">
         <TopNavbar />
         <LearningSession />
         <InputBar />
