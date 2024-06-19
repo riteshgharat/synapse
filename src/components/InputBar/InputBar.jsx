@@ -2,7 +2,7 @@ import React from 'react'
 
 function InputBar() {
   return (
-    <div>InputBar</div>
+    <div className='bg-gray-500'>InputBar</div>
   )
 }
 

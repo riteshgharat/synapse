@@ -2,7 +2,7 @@ import React from 'react'
 
 function TopNavbar() {
   return (
-    <div>TopNavbar</div>
+    <div className='bg-yellow-500'>TopNavbar</div>
   )
 }
 
