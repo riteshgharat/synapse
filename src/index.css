@@ -2,17 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-#root{
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 100vw;
-    background-color: #f0f0f0;
+:root {
+  --color-primary: #ffffff;
+  --color-secondary: #def0ff;
+  --color-tertiary: #3982bf;
+  --color-quaternary: #224a6d;
+  --color-quinary: #2caee5;
+
+  --color-primary-text: #3982bf;
+  --color-secondary-text: #ffffff;
+
+  --color-primary-svg: #3982bf;
+  --color-secondary-svg: #ffffff;
 }
 
+#root {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
+}
+
+h1,
+h2 {
+  font-family: poppins;
+  font-weight: 600;
+}
+
+svg{
+  cursor: pointer;
+}
+
+/* custom scrollbar style */
+.Add-Scrollbar {
+  overflow: auto;
+  scrollbar-color: var(--color-tertiary) var(--color-secondary);
+}
+
+.Add-Scrollbar-X {
+  overflow-x: auto;
+  scrollbar-color: var(--color-tertiary) var(--color-secondary);
+}
+
+.Add-Scrollbar-Y {
+  overflow-y:auto;
+  scrollbar-color: var(--color-tertiary) var(--color-secondary);
+}
+
+
 @media screen and (max-width: 768px) {
-    #root{
-        flex-direction: column-reverse;
-    }
+  #root {
+    flex-direction: column-reverse;
+  }
 }
