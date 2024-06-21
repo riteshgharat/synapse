@@ -6,6 +6,7 @@ import SubNavbar from "./components/SubNavbar/SubNavbar";
 import InputBar from "./components/InputBar/InputBar";
 import LearningSession from "./components/LearningSession/LearningSession";
 
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -13,7 +14,7 @@ function App() {
     <>
       <VerticalNavbar />
       <SubNavbar />
-      <div className="flex flex-grow flex-col">
+      <div className="flex flex-grow flex-col justify-center items-center">
         <TopNavbar />
         <LearningSession />
         <InputBar />
