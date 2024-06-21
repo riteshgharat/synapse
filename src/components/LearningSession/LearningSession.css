@@ -1,41 +1,41 @@
-.Main-Container{
+.Main-Container {
   max-width: 900px;
   margin: auto;
   background: #fff;
   /* border: 1px solid red; */
 }
 
-.Greet{
+.Greet {
   margin: 50px 0px 0px 0px;
   padding: 20px 20px 0px 20px;
   /* border: 1px solid red; */
 }
 
-.Heading{
+.Heading {
   font-family: Poppins;
-font-size: 3rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-background: linear-gradient(90deg, #3982BF 0%, #2CAEE5 100%);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background: linear-gradient(90deg, #3982bf 0%, #2caee5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.Sub-Heading{
-  background: linear-gradient(90deg, #3982BF 0%, #2CAEE5 100%);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-font-family: Poppins;
-font-size: 2rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+.Sub-Heading {
+  background: linear-gradient(90deg, #3982bf 0%, #2caee5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Poppins;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
-.Cards{
+.Cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 15px;
@@ -48,11 +48,10 @@ line-height: normal;
   height: 200px;
   /* padding: 15px; */
   background-color: #fff;
-  position: relative;
+ /* position: relative;*/
   cursor: pointer;
 }
 
-  
 .Card p {
   color: var(--Background, #3982bf);
   font-family: Poppins;
@@ -61,4 +60,4 @@ line-height: normal;
   font-weight: 600;
   line-height: normal;
   padding: 0.6rem;
-} 
+}

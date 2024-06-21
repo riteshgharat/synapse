@@ -13,7 +13,13 @@ function App() {
 
   return (
     <>
-      <SignUp />
+      <VerticalNavbar />
+      <SubNavbar />
+      <div className="h-full w-auto flex flex-grow flex-col justify-center items-center">
+        <TopNavbar />
+        <LearningSession />
+        <InputBar />
+      </div>
     </>
   );
 }
@@ -21,11 +27,5 @@ function App() {
 export default App;
 
 /**
-    <VerticalNavbar />
-      <SubNavbar />
-      <div className="flex flex-grow flex-col justify-center items-center">
-        <TopNavbar />
-        <LearningSession />
-        <InputBar />
-      </div>
+    
 **/
