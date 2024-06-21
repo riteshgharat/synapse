@@ -3,8 +3,8 @@ import "./SubNavbar.css";
 import Card from "./Card/Card";
 import CloseNav from "../../assets/navbar_close.svg?react";
 
-const textColor = "#3982BF";
-const bgColor = "#DEF0FF";
+//const textColor = "#3982BF";
+//const bgColor = "#DEF0FF";
 
 function SubNavbar() {
   return (
@@ -27,7 +27,6 @@ function SubNavbar() {
           <Card mode="language" title="language" description="Yes, I will help you to solve Physics problems"/> 
           <Card mode="grades" title="grades" description="Yes, I will help you to solve Physics problems"/> 
           <Card description="Yes, I will help you to solve Physics problems"/> 
-
         </div>
       </div>
       <div className="bg-slate-700 Sub-Navbar-Bg"></div>
