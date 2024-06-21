@@ -7,6 +7,7 @@ import InputBar from "./components/InputBar/InputBar";
 import LearningSession from "./components/LearningSession/LearningSession";
 import SignUp from "./components/SignUp/SignUp";
 
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -22,7 +23,7 @@ export default App;
 /**
     <VerticalNavbar />
       <SubNavbar />
-      <div className="flex flex-grow flex-col">
+      <div className="flex flex-grow flex-col justify-center items-center">
         <TopNavbar />
         <LearningSession />
         <InputBar />

@@ -3,26 +3,27 @@ import "./LearningSession.css";
 
 function LearningSession() {
   return (
-    <div className="ls-main w-full flex-grow">
-      <div className="p-tag">
-        <p className="title">
-          Hello, <span>Dev</span>
-        </p>
-        <p className="greet">How can I help you today?</p>
-      </div>
-      <div className="cards flex">
-        <div className="card card-1">
-          <p>Help me solve a algebric problem</p>
+    <div className="Main bg-white w-full h-full">
+      <div className="Main-Container flex-grow">
+        <div className="Greet">
+          <p className="Heading">Hello,<span>Dev.</span></p>
+          <p className="Sub-Heading">How can I help you today?</p>
         </div>
-        <div className="card card-2">
-          <p>Help write a short story.</p>
-        </div>
-        <div className="card card-3">
+
+        <div className="Cards flex gap-5">
+        <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
           <p>Help understand Quantum Mechanics</p>
         </div>
-        <div className="card card-4">
-          <p>Help understand Vectors</p>
+        <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
+          <p>Help understand Quantum Mechanics</p>
         </div>
+        <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
+          <p>Help understand Quantum Mechanics</p>
+        </div>
+        <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
+          <p>Help understand Quantum Mechanics</p>
+        </div>
+      </div>
       </div>
     </div>
   );

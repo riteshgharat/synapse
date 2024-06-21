@@ -1,58 +1,64 @@
-.ls-main {
+.Main-Container{
+  max-width: 900px;
+  margin: auto;
   background: #fff;
-}
-
-.p-tag {
-  width: 55rem;
-  height: 8.48181rem;
-  flex-shrink: 0;
   /* border: 1px solid red; */
-  margin: 2rem 0rem 0rem 2rem;
 }
 
-.title {
+.Greet{
+  margin: 50px 0px 0px 0px;
+  padding: 20px 20px 0px 20px;
+  /* border: 1px solid red; */
+}
+
+.Heading{
   font-family: Poppins;
-  font-size: 3.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  background: linear-gradient(90deg, #3982bf 0%, #2caee5 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.greet {
-  background: linear-gradient(90deg, #3982bf 0%, #2caee5 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: Poppins;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-
-.card{
-    width: 9.375rem;
-height: 7.5rem;
-flex-shrink: 0;
-border: 1px solid #3982BF;
-border-radius: 0.95rem;
-margin: 1rem 0px 0px 1rem;
-}
-
-.card-1{
-    margin-left: 2rem;
-}
-
-.card p{
-    color: var(--Background, #3982BF);
-font-family: Poppins;
-font-size: 0.875rem;
+font-size: 3rem;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
-padding: 0.6rem;
+background: linear-gradient(90deg, #3982BF 0%, #2CAEE5 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
+
+.Sub-Heading{
+  background: linear-gradient(90deg, #3982BF 0%, #2CAEE5 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-family: Poppins;
+font-size: 2rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.Cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  /* border: 1px solid red; */
+}
+
+.Card {
+  border: 1px solid #3982bf;
+  height: 200px;
+  /* padding: 15px; */
+  background-color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+  
+.Card p {
+  color: var(--Background, #3982bf);
+  font-family: Poppins;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0.6rem;
+} 
