@@ -8,7 +8,7 @@ function SignUp() {
     <>
       <div className="w-full h-full flex flex-col md:flex-row">
         <div className="w-full h-3/5 md:w-1/2 md:h-full flex items-center justify-center bg-gradient-to-b md:bg-gradient-to-r from-Tertiary to-Secondary">
-          <Model1Svg className="h-full md:h-3/5"/>
+          <Model1Svg className="h-full md:h-3/5" />
         </div>
         <div className="w-full h-2/5 md:w-1/2 md:h-full flex flex-col items-center justify-center bg-Secondary text-PrimaryText">
           <div className="flex flex-col items-center gap-2">
@@ -25,7 +25,10 @@ function SignUp() {
                 Continue with Apple
               </span>
             </button>
-            <span>Already signed in? <span className="font-medium cursor-pointer">Log In</span> here</span>
+            <span>
+              Already signed in?{" "}
+              <span className="font-medium cursor-pointer">Log In</span> here
+            </span>
           </div>
         </div>
       </div>

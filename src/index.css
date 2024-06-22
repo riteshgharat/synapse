@@ -31,7 +31,7 @@ h2 {
   font-weight: 600;
 }
 
-svg{
+svg {
   cursor: pointer;
 }
 
@@ -47,10 +47,9 @@ svg{
 }
 
 .Add-Scrollbar-Y {
-  overflow-y:auto;
+  overflow-y: auto;
   scrollbar-color: var(--color-tertiary) var(--color-secondary);
 }
-
 
 @media screen and (max-width: 768px) {
   #root {

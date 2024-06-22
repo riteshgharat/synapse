@@ -14,9 +14,15 @@ function App() {
   return (
     <>
       <VerticalNavbar />
-      <SubNavbar isSubNavVisible={isSubNavVisible} setIsSubNavVisible={setIsSubNavVisible}/>
+      <SubNavbar
+        isSubNavVisible={isSubNavVisible}
+        setIsSubNavVisible={setIsSubNavVisible}
+      />
       <div className="h-full w-auto flex flex-grow flex-col justify-center items-center">
-        <TopNavbar isSubNavVisible={isSubNavVisible} setIsSubNavVisible={setIsSubNavVisible}/>
+        <TopNavbar
+          isSubNavVisible={isSubNavVisible}
+          setIsSubNavVisible={setIsSubNavVisible}
+        />
         <LearningSession />
         <InputBar />
       </div>

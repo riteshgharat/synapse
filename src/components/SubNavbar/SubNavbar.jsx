@@ -6,8 +6,7 @@ import CloseSubNavSvg from "../../assets/navbar_close.svg?react";
 //const textColor = "#3982BF";
 //const bgColor = "#DEF0FF";
 
-function SubNavbar({ isSubNavVisible, setIsSubNavVisible}) {
-
+function SubNavbar({ isSubNavVisible, setIsSubNavVisible }) {
   const closeNavbar = () => {
     setIsSubNavVisible(false);
   };

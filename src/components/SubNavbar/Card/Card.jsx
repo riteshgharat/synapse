@@ -54,10 +54,12 @@ function Card({ mode = "learning", title = "learning", description }) {
 
   return (
     <div className="w-56 h-16 px-2 py-2 bg-Primary flex rounded-md cursor-pointer hover:border-2 hover:border-Tertiary">
-      <ModeIcon className="fill-PrimarySvg w-6 h-6"/>
+      <ModeIcon className="fill-PrimarySvg w-6 h-6" />
       <div className="mx-2 w-full">
-      <h2>{title.charAt(0).toUpperCase() + title.slice(1, 17)}</h2>
-      <span className="w-full text-xs break-words">{description.slice(0, 32)}...</span>
+        <h2>{title.charAt(0).toUpperCase() + title.slice(1, 17)}</h2>
+        <span className="w-full text-xs break-words">
+          {description.slice(0, 32)}...
+        </span>
       </div>
     </div>
   );

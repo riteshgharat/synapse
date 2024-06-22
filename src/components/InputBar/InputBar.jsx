@@ -22,7 +22,10 @@ function InputBar() {
 
   return (
     <div className="w-full flex justify-center bg-white p-4">
-      <div className="w-11/12 px-4 py-2 flex items-center rounded-md gap-4 bg-Secondary" style={{minHeight:"48px", maxHeight: "20vh"}}>
+      <div
+        className="w-11/12 px-4 py-2 flex items-center rounded-md gap-4 bg-Secondary"
+        style={{ minHeight: "48px", maxHeight: "20vh" }}
+      >
         <textarea
           ref={textareaRef}
           className="w-full text-base font-normal text-PrimaryText placeholder-PrimaryText bg-transparent border-none outline-none resize-none overflow-hidden Add-Scrollbar-Y"
