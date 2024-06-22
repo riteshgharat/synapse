@@ -7,16 +7,16 @@ import InputBar from "./components/InputBar/InputBar";
 import LearningSession from "./components/LearningSession/LearningSession";
 import SignUp from "./components/SignUp/SignUp";
 
-
 function App() {
-  const [count, setCount] = useState(0);
+  // useState to manage the visibility of the SubNavbar
+  const [isSubNavVisible, setIsSubNavVisible] = useState(true);
 
   return (
     <>
       <VerticalNavbar />
-      <SubNavbar />
+      <SubNavbar isSubNavVisible={isSubNavVisible} setIsSubNavVisible={setIsSubNavVisible}/>
       <div className="h-full w-auto flex flex-grow flex-col justify-center items-center">
-        <TopNavbar />
+        <TopNavbar isSubNavVisible={isSubNavVisible} setIsSubNavVisible={setIsSubNavVisible}/>
         <LearningSession />
         <InputBar />
       </div>
@@ -25,7 +25,3 @@ function App() {
 }
 
 export default App;
-
-/**
-    
-**/
