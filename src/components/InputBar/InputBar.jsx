@@ -21,9 +21,9 @@ function InputBar() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center bg-white p-4">
+    <div className="w-full flex flex-col justify-center items-center bg-Primary p-4">
       <div
-        className="w-11/12 px-4 py-2 flex items-center rounded-md gap-4 bg-Secondary"
+        className="w-full md:w-11/12 px-4 py-2 flex items-center rounded-md gap-4 bg-Secondary"
         style={{ minHeight: "48px", maxHeight: "20vh" }}
       >
         <textarea
@@ -45,6 +45,7 @@ function InputBar() {
           </button>
         </div>
       </div>
+      <span className="w-full md:w-11/12 pt-1 text-xs text-center text-PrimaryText">Synapse can make mistakes. Check important information.</span>
     </div>
   );
 }
