@@ -7,9 +7,8 @@ function TopNavbar({ isSubNavVisible, setIsSubNavVisible }) {
   if (!isSubNavVisible) visibleOpenNavBtn = "block";
 
   return (
-    <div className="w-full h-12 flex flex-row items-center bg-Primary sticky top-0 left-20">
+    <div className="w-full min-h-12 flex items-center bg-Primary sticky top-0 left-0">
       <button
-        className=""
         onClick={e => setIsSubNavVisible(!isSubNavVisible)}
         style={{ display: visibleOpenNavBtn }}
       >

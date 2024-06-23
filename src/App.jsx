@@ -5,6 +5,7 @@ import TopNavbar from "./components/TopNavbar/TopNavbar";
 import SubNavbar from "./components/SubNavbar/SubNavbar";
 import InputBar from "./components/InputBar/InputBar";
 import LearningSession from "./components/LearningSession/LearningSession";
+import ChatWindow from "./components/ChatWindow/ChatWindow";
 import SignUp from "./components/SignUp/SignUp";
 
 function App() {
@@ -18,12 +19,12 @@ function App() {
         isSubNavVisible={isSubNavVisible}
         setIsSubNavVisible={setIsSubNavVisible}
       />
-      <div className="h-full w-auto flex flex-grow flex-col justify-center items-center">
+      <div className="h-full w-full md:w-[calc(100%-60px-250px)] flex flex-grow flex-col justify-center items-center">
         <TopNavbar
           isSubNavVisible={isSubNavVisible}
           setIsSubNavVisible={setIsSubNavVisible}
         />
-        <LearningSession />
+        <ChatWindow />
         <InputBar />
       </div>
     </>
