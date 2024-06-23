@@ -8,6 +8,8 @@ import LearningSession from "./components/LearningSession/LearningSession";
 import ChatWindow from "./components/ChatWindow/ChatWindow";
 import SignUp from "./components/SignUp/SignUp";
 
+import TestMode from "./components/TestMode/TestMode";
+
 function App() {
   // useState to manage the visibility of the SubNavbar
   const [isSubNavVisible, setIsSubNavVisible] = useState(true);
@@ -24,7 +26,7 @@ function App() {
           isSubNavVisible={isSubNavVisible}
           setIsSubNavVisible={setIsSubNavVisible}
         />
-        <ChatWindow />
+        <TestMode />
         <InputBar />
       </div>
     </>
