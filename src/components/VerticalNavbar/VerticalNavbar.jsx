@@ -9,21 +9,22 @@ import Logout from "../../assets/logout.svg?react";
 
 function VerticalNavbar() {
   return (
-    <div className="bg-Tertiary vertical-navbar flex flex-row justify-evenly md:flex-col items-center md:justify-between">
+    <div className="bg-Tertiary vertical-navbar flex flex-row justify-center md:flex-col items-center md:justify-between">
       <div className="top-icons md:mt-2">
         <img
           src={logo}
           className="h-12 w-[46px] bg-Primary py-1 px-1 rounded-[10px] cursor-pointer LogoImage"
           alt="logo"
         />
-        <div className="flex flex-row justify-evenly md:flex-col items-center md:justify-between gap-[18vw] md:gap-0">
-          <Learning className="h-10 w-10 fill-SecondarySvg rounded-[10px] bg-Quaternary md:mt-20 px-2 py-2" />
-          <Tuition className="h-10 w-10 fill-SecondarySvg rounded-[10px] bg-Quaternary md:mt-4 px-2 py-2" />
-          <Test className="h-10 w-10 fill-SecondarySvg rounded-[10px] bg-Quaternary md:mt-4 px-2 py-2" />
+        <div className="h-full w-full flex flex-row justify-between my-5 md:flex-col md:mt-20 md:my-0 md:ml-0.5">
+          <Learning className="h-10 w-10 ml-[3vw] md:ml-0 fill-SecondarySvg rounded-[10px] bg-Quaternary md:mb-[-5vh] px-1.5 py-1.5" />
+          <Tuition className="h-10 w-10 ml-[18vw] md:ml-0 fill-SecondarySvg rounded-[10px] bg-Quaternary md:mb-[-5vh] px-2 py-2" />
+          <Test className="h-10 w-10 ml-[18vw] md:ml-0 fill-SecondarySvg rounded-[10px] bg-Quaternary px-2 py-2" />
+          <User className="h-10 w-10 ml-[18vw] md:ml-0 md:mt-[34vh] fill-SecondarySvg rounded-[10px] bg-Quaternary px-2 py-2 md:hidden" />
         </div>
       </div>
       <div className="md:mb-[18vh] ml-4 md:ml-0">
-        <User className="h-10 w-10 fill-SecondarySvg rounded-[10px] bg-Quaternary px-2 py-2 md:mb-4" />
+      <User className="h-10 w-10 ml-[11vw] md:ml-0 md:mt-[34vh] fill-SecondarySvg rounded-[10px] bg-Quaternary px-2 py-2 md:mb-4 User" />
         <Logout className="h-10 w-10 fill-SecondarySvg rounded-[10px] bg-Quaternary px-2 py-2 md:mb-2 Logout" />
       </div>
     </div>
