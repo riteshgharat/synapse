@@ -12,7 +12,7 @@ import TestMode from "./components/TestMode/TestMode";
 
 function App() {
   // useState to manage the visibility of the SubNavbar
-  const [isSubNavVisible, setIsSubNavVisible] = useState(true);
+  const [isSubNavVisible, setIsSubNavVisible] = useState(false);
 
   return (
     <>
@@ -26,7 +26,7 @@ function App() {
           isSubNavVisible={isSubNavVisible}
           setIsSubNavVisible={setIsSubNavVisible}
         />
-        <TestMode />
+        <TestMode/>
         <InputBar />
       </div>
     </>
