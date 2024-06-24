@@ -15,7 +15,19 @@
   --color-primary-svg: #3982bf;
   --color-secondary-svg: #ffffff;
 }
+.dark-theme {
+  --color-primary: #1e1e1e;
+  --color-secondary: #333333;
+  --color-tertiary: #4a4a4a;
+  --color-quaternary: #3a3a3a;
+  --color-quinary: #5a5a5a;
 
+  --color-primary-text: #e0e0e0;
+  --color-secondary-text: #f0f0f0;
+
+  --color-primary-svg: #e0e0e0;
+  --color-secondary-svg: #f0f0f0;
+}
 #root {
   position: fixed;
   display: flex;

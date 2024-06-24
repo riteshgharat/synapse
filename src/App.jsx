@@ -26,7 +26,7 @@ function App() {
           isSubNavVisible={isSubNavVisible}
           setIsSubNavVisible={setIsSubNavVisible}
         />
-        <TestMode />
+        <ChatWindow />
         <InputBar />
       </div>
     </>
