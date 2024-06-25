@@ -24,4 +24,7 @@
   .User {
     display: none;
   }
+  .Hidden {
+    display: none;
+  }
 }

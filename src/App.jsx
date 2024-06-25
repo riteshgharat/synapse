@@ -10,6 +10,8 @@ import SignUp from "./components/SignUp/SignUp";
 
 import TestMode from "./components/TestMode/TestMode";
 
+import ExpertSection from "./components/ExpertSection/ExpertSection";
+
 function App() {
   // useState to manage the visibility of the SubNavbar
   const [isSubNavVisible, setIsSubNavVisible] = useState(true);
@@ -28,6 +30,7 @@ function App() {
         />
         <ChatWindow />
         <InputBar />
+        {/*<ExpertSection/>*/}
       </div>
     </>
   );
