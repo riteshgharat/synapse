@@ -13,13 +13,13 @@ export default function ExpertSection() {
       </div>
       <div className='h-full md:h-full flex flex-col items-center overflow-visible md:flex-row md:flex-wrap gap-1 md:gap-4 md:justify-center mt-[3vh]'>
       <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="physics" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="chemistry" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="biology" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="computer science" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="history" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="economics" desc="I will help you to solve mathematics related problems"/>
+      <ExpertCard title="literature" desc="I will help you to solve mathematics related problems"/>
       </div>
     </div>
     </>
