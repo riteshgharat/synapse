@@ -28,8 +28,7 @@ function App() {
           isSubNavVisible={isSubNavVisible}
           setIsSubNavVisible={setIsSubNavVisible}
         />
-        <ChatWindow />
-        <InputBar />
+        <ExpertSection/>
       </div>
     </>
   );
