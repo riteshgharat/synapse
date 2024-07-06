@@ -1,9 +1,34 @@
 import React from "react";
+import { useNavigate} from "react-router-dom";
 import Model1Svg from "../../assets/model1.svg?react";
 import GoogleSvg from "../../assets/google.svg?react";
 import AppleSvg from "../../assets/apple.svg?react";
 
+import firebaseAuth from "../../firebase/auth";
+
 function SignUp() {
+  const navigate = useNavigate();
+  
+  async function handleGoogleSignIn() {
+    try {
+      const result = await firebaseAuth.signInWithGoogle();
+      console.log(result);
+      if (result) navigate('/app/learning');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // async function handleAppleSignIn() {
+  //   try{
+  //     const result = await firebaseAuth.signInWithApple();
+  //     console.log(result);
+  //   }
+  //   catch(err){
+  //     console.log(err);
+  //   }
+  // }
+
   return (
     <>
       <div className="w-full h-full flex flex-col md:flex-row">
@@ -13,18 +38,25 @@ function SignUp() {
         <div className="w-full h-2/5 md:w-1/2 md:h-full flex flex-col items-center justify-center bg-Secondary text-PrimaryText">
           <div className="flex flex-col items-center gap-2">
             <h1 className="my-2 text-2xl">Sign Up</h1>
-            <button className="w-72 md:w-80 h-12 px-3 inline-flex items-center rounded-md bg-Primary border-2 border-Tertiary">
+            <button
+              onClick={handleGoogleSignIn}
+              className="w-72 md:w-80 h-12 px-3 inline-flex items-center rounded-md bg-Primary border-2 border-Tertiary"
+            >
               <GoogleSvg className="w-7 h-6 mx-2" />
               <span className="w-full mx-auto text-left font-medium">
                 Continue with Google
               </span>
             </button>
-            <button className="w-72 md:w-80 h-12 px-3 inline-flex items-center rounded-md bg-Primary border-2 border-Tertiary">
+            {/* 
+            <button
+              onClick={handleAppleSignIn}
+              className="w-72 md:w-80 h-12 px-3 inline-flex items-center rounded-md bg-Primary border-2 border-Tertiary"
+            >
               <AppleSvg className="w-6 h-6 mx-2" />
               <span className="w-full mx-auto text-left font-medium">
                 Continue with Apple
               </span>
-            </button>
+            </button> */}
             <span>
               Already signed in?{" "}
               <span className="font-medium cursor-pointer">Log In</span> here

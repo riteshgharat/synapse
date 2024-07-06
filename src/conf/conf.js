@@ -1,4 +1,3 @@
-
 const conf = {
   // Firebase configuration from .env file
   firebaseConfig: {

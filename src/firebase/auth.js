@@ -1,52 +1,65 @@
-import { app } from "./firebase/config.js";
+import { app } from "./config.js";
 
 import {
   getAuth,
   GoogleAuthProvider,
+  OAuthProvider,
   signInWithPopup,
-  AppleAuthProvider,
   signOut,
 } from "firebase/auth";
 
+export const auth = getAuth(app);
+
 export class AuthService {
   constructor() {
-    this.auth = getAuth(app);
+    this.auth = auth;
   }
 
   // Authentication services
   async signInWithGoogle() {
-    const provider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+
     try {
-      const result = await signInWithPopup(this.auth, provider);
-      return result.user;
+      const result = await signInWithPopup(this.auth, googleProvider);
+      // This gives you a Google Access Token.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      return user;
     } catch (error) {
-      console.error("FirebaseService :: signInWithGoogle :: error", error);
-      throw error;
+      console.error("Error during sign-in:", error);
     }
   }
 
-  async signInWithApple() {
-    const provider = new AppleAuthProvider();
-    try {
-      const result = await signInWithPopup(this.auth, provider);
-      return result.user;
-    } catch (error) {
-      console.error("FirebaseService :: signInWithApple :: error", error);
-      throw error;
-    }
-  }
+  // async signInWithApple() {
+  //   const appleProvider = new OAuthProvider('apple.com')
+  //   try {
+  //     const result = await signInWithPopup(this.auth, appleProvider);
+  //     // This gives you an Apple Access Token.
+  //     const credential = OAuthProvider.credentialFromResult(result);
+  //     const token = credential.accessToken;
+  //     // The signed-in user info.
+  //     const user = result.user;
+  //     return user;
+  //   } catch (error) {
+  //     console.error("Error during Apple sign-in:", error);
+  //   }
+  // }
 
-   // Logout/Sign out method
-   async logout() {
+  // Logout/Sign out method
+  async logout() {
     try {
       await signOut(this.auth);
+      console.log("User signed out.");
       return true;
     } catch (error) {
-      console.error("AuthService :: logout :: error", error);
-      throw error;
+      console.error("Error during sign-out:", error);
+      return false;
     }
   }
 }
 
 const firebaseAuth = new AuthService();
+
 export default firebaseAuth;

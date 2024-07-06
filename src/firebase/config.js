@@ -3,4 +3,4 @@ import { initializeApp } from "firebase/app";
 
 const app = initializeApp(conf.firebaseConfig);
 
-export default app;
+export { app };
