@@ -11,7 +11,8 @@ export default function ExpertSection() {
         Expert Subject AI Tutor
       </p>
       </div>
-      <div className='h-full md:h-full flex flex-col items-center overflow-visible md:flex-row md:flex-wrap gap-1 md:gap-4 md:justify-center mt-[3vh]'>
+      <div className='h-full w-full flex flex-row justify-center items-center'>
+      <div className='h-full w-[90%] md:h-full flex flex-col items-center overflow-visible md:flex-row md:flex-wrap gap-1 md:gap-4 md:justify-center mt-[9vh]'>
       <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
       <ExpertCard title="physics" desc="I will help you to solve mathematics related problems"/>
       <ExpertCard title="chemistry" desc="I will help you to solve mathematics related problems"/>
@@ -20,6 +21,7 @@ export default function ExpertSection() {
       <ExpertCard title="history" desc="I will help you to solve mathematics related problems"/>
       <ExpertCard title="economics" desc="I will help you to solve mathematics related problems"/>
       <ExpertCard title="literature" desc="I will help you to solve mathematics related problems"/>
+      </div>
       </div>
     </div>
     </>
