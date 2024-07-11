@@ -1,19 +1,22 @@
 import React from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import Model1Svg from "../../assets/model1.svg?react";
 import GoogleSvg from "../../assets/google.svg?react";
 import AppleSvg from "../../assets/apple.svg?react";
 
 import firebaseAuth from "../../firebase/auth";
 
-function SignUp() {
+function AuthPage() {
+  // get the current location
+  const { pathname } = useLocation();
+  // navigate function
   const navigate = useNavigate();
-  
+
+  // function to handle the google sign in
   async function handleGoogleSignIn() {
     try {
       const result = await firebaseAuth.signInWithGoogle();
-      console.log(result);
-      if (result) navigate('/app/learning');
+      if (result) navigate("/app/learning");
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +40,9 @@ function SignUp() {
         </div>
         <div className="w-full h-2/5 md:w-1/2 md:h-full flex flex-col items-center justify-center bg-Secondary text-PrimaryText">
           <div className="flex flex-col items-center gap-2">
-            <h1 className="my-2 text-2xl">Sign Up</h1>
+            <h1 className="my-2 text-2xl">
+              {pathname === "/auth/signup" ? "Sign Up" : "Log In"}
+            </h1>
             <button
               onClick={handleGoogleSignIn}
               className="w-72 md:w-80 h-12 px-3 inline-flex items-center rounded-md bg-Primary border-2 border-Tertiary"
@@ -57,10 +62,25 @@ function SignUp() {
                 Continue with Apple
               </span>
             </button> */}
-            <span>
-              Already signed in?{" "}
-              <span className="font-medium cursor-pointer">Log In</span> here
-            </span>
+
+            {/* to interchange signup and login page */}
+            {pathname == "/auth/signup" ? (
+              <span>
+                Already signed in?{" "}
+                <NavLink to="/auth/login">
+                  <span className="font-medium cursor-pointer">Log In</span>
+                </NavLink>{" "}
+                here
+              </span>
+            ) : (
+              <span>
+                Don't have an account?{" "}
+                <NavLink to="/auth/signup">
+                  <span className="font-medium cursor-pointer">Sign Up</span>
+                </NavLink>{" "}
+                here
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -68,4 +88,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default AuthPage;

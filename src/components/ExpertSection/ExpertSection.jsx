@@ -1,29 +1,33 @@
-import React from 'react'
-import ExpertCard from './ExpertCard'
+import React from "react";
+import ExpertCard from "./ExpertCard";
 
-export default function ExpertSection() {
+function ExpertSection() {
+
+  // render the expert section
   return (
     <>
-    
-    <div className='h-full w-full Add-Scrollbar'>
-        <div className='flex flex-row justify-center mt-[9vh] md:mt-[5vh]'>
-      <p className='text-3xl md:text-6xl font-bold'>
-        Expert Subject AI Tutor
-      </p>
+      <div className="h-full w-full Add-Scrollbar">
+        <div className="flex flex-col justify-center mt-12 md:mt-0">
+          <h1 className="m-5 mb-0 text-4xl md:text-5xl font-bold text-center text-PrimaryText">
+            PTAs
+          </h1>
+          <p className="w-full mb-5 p-3 text-lg text-center font-normal opacity-80 text-PrimaryText">Experience personalized learning with AI-driven study guides</p>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="h-auto w-full md:max-w-4xl flex flex-wrap gap-7 pb-7 justify-center items-center">
+            <ExpertCard expertId="mathematics" />
+            <ExpertCard expertId="physics" />
+            <ExpertCard expertId="chemistry" />
+            <ExpertCard expertId="biology" />
+            <ExpertCard expertId="computer-science" />
+            <ExpertCard expertId="engineering" />
+            <ExpertCard expertId="history" />
+            <ExpertCard expertId="literature" />
+          </div>
+        </div>
       </div>
-      <div className='h-full w-full flex flex-row justify-center items-center'>
-      <div className='h-full w-[90%] md:h-full flex flex-col items-center overflow-visible md:flex-row md:flex-wrap gap-1 md:gap-4 md:justify-center mt-[9vh]'>
-      <ExpertCard title="Mathematics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="physics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="chemistry" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="biology" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="computer science" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="history" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="economics" desc="I will help you to solve mathematics related problems"/>
-      <ExpertCard title="literature" desc="I will help you to solve mathematics related problems"/>
-      </div>
-      </div>
-    </div>
     </>
-  )
+  );
 }
+
+export default ExpertSection;

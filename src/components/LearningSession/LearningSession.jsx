@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LearningSession.css";
+import Card from "./Card";
+import firebaseAuth from "../../firebase/auth";
 
 function LearningSession() {
+  // state to manage the user name
+  const [userName, setUserName] = useState("");
+  // get the user name
+  firebaseAuth
+    .getUser()
+    .then(user => setUserName(user.displayName.split(" ")[0]));
+
+  // card content
+  const cardContent = [
+    "Help understand blockchain technology.",
+    "Help understand Quantum Mechanics.",
+    "Help write a short story.",
+    "Help me solve algebric problem",
+  ];
+
+  // render the learning session component
   return (
-    <div className="Main bg-white w-full h-full">
-      <div className="Main-Container flex-grow">
-        <div className="Greet">
-          <p className="Heading text-5xl md:text-8xl">
-            Hello,<span>Dev.</span>
+    <div className="w-full h-full flex justify-center bg-Primary">
+      <div className="w-full h-auto md:w-3/4">
+        <div className="mt-12 mb-12 pl-5 pr-5">
+          <p className="text-6xl md:7xl Heading">
+            Hello, <span>{userName !== "" ? userName : "Dev"}.</span>
           </p>
-          <p className="Sub-Heading text-2xl md:text-5xl">How can I help you today?</p>
+          <p className="text-xl md:text-4xl Sub-Heading">
+            How can I help you today?
+          </p>
         </div>
 
-        <div className="Cards flex gap-5 flex">
-          <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
-            <p>Help understand Quantum Mechanics</p>
-          </div>
-          <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
-            <p>Help understand Quantum Mechanics</p>
-          </div>
-          <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
-            <p>Help understand Quantum Mechanics</p>
-          </div>
-          <div className="Card w-36 h-28 flex-shrink-0 mt-4 rounded-2xl">
-            <p>Help understand Quantum Mechanics</p>
-          </div>
+        {/*Card container */}
+        <div className="flex gap-4 p-5 Add-Scrollbar-Hidden">
+          {cardContent.map((content, index) => (
+            <Card key={index} content={content} />
+          ))}
         </div>
       </div>
     </div>

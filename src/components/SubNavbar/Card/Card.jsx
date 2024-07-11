@@ -1,6 +1,6 @@
 import React from "react";
 
-import Math from "../../../assets/math.svg?react";
+import Mathematics from "../../../assets/math.svg?react";
 import Physics from "../../../assets/physics.svg?react";
 import Chemistry from "../../../assets/chemistry.svg?react";
 import Biology from "../../../assets/biology.svg?react";
@@ -13,10 +13,11 @@ import Learning from "../../../assets/learning.svg?react";
 import History from "../../../assets/history.svg?react";
 
 function Card({ mode = "learning", title = "learning", description }) {
+  // get the icon based on the mode
   let ModeIcon;
   switch (mode) {
-    case "math":
-      ModeIcon = Math;
+    case "mathematics":
+      ModeIcon = Mathematics;
       break;
     case "physics":
       ModeIcon = Physics;
@@ -52,6 +53,7 @@ function Card({ mode = "learning", title = "learning", description }) {
       ModeIcon = Learning;
   }
 
+  // render the card component
   return (
     <div className="w-56 h-16 px-2 py-2 bg-Primary flex rounded-md cursor-pointer hover:border-2 hover:border-Tertiary">
       <ModeIcon className="fill-PrimarySvg w-6 h-6" />

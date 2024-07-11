@@ -8,9 +8,11 @@ import {
   signOut,
 } from "firebase/auth";
 
+// Firebase Auth instance
 export const auth = getAuth(app);
 
 export class AuthService {
+  // Constructor
   constructor() {
     this.auth = auth;
   }
@@ -58,8 +60,13 @@ export class AuthService {
       return false;
     }
   }
+
+  async getUser() {
+    return await this.auth.currentUser;
+  }
 }
 
+// Create an instance of the AuthService class
 const firebaseAuth = new AuthService();
 
 export default firebaseAuth;

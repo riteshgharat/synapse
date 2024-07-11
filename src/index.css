@@ -1,7 +1,9 @@
+/* Tailwind Component */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS */
 :root {
   --color-primary: #ffffff;
   --color-secondary: #def0ff;
@@ -15,6 +17,7 @@
   --color-primary-svg: #3982bf;
   --color-secondary-svg: #ffffff;
 }
+
 .dark-theme {
   --color-primary: #1e1e1e;
   --color-secondary: #333333;
@@ -28,6 +31,7 @@
   --color-primary-svg: #e0e0e0;
   --color-secondary-svg: #f0f0f0;
 }
+
 #root {
   position: fixed;
   display: flex;
@@ -47,7 +51,11 @@ svg {
   cursor: pointer;
 }
 
-/* custom scrollbar style */
+svg:hover {
+  scale: 1.1;
+}
+
+/* Custom Scrollbar */
 .Add-Scrollbar {
   overflow: auto;
   scrollbar-color: var(--color-tertiary) var(--color-secondary);
@@ -63,8 +71,15 @@ svg {
   scrollbar-color: var(--color-tertiary) var(--color-secondary);
 }
 
-@media screen and (max-width: 768px) {
+.Add-Scrollbar-Hidden  {
+  overflow: auto;
+  scrollbar-color: transparent transparent;
+}
+
+/* Media Queries */
+@media screen and (max-width: 767px) {
   #root {
     flex-direction: column-reverse;
+    position: relative;
   }
 }

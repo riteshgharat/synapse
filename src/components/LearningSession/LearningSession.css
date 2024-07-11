@@ -1,15 +1,4 @@
-.Main-Container {
-  max-width: 900px;
-  margin: auto;
-  background: #fff;
-  /* border: 1px solid red; */
-}
-
-.Greet {
-  margin: 50px 0px 0px 0px;
-  padding: 20px 20px 0px 20px;
-  /* border: 1px solid red; */
-}
+/* CSS for he LearningSession component */
 
 .Heading {
   font-family: Poppins;
@@ -17,47 +6,27 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: linear-gradient(90deg, #3982bf 0%, #2caee5 100%);
+  background: linear-gradient(
+    90deg,
+    #2caee5 0%,
+    #3982bf 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .Sub-Heading {
-  background: linear-gradient(90deg, #3982bf 0%, #2caee5 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-quinary) 0%,
+    var(--color-tertiary) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: Poppins;
-  font-size: 2rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-}
-
-.Cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 20px;
-  /* border: 1px solid red; */
-}
-
-.Card {
-  border: 1px solid #3982bf;
-  height: 200px;
-  /* padding: 15px; */
-  background-color: #fff;
-  /* position: relative;*/
-  cursor: pointer;
-}
-
-.Card p {
-  color: var(--Background, #3982bf);
-  font-family: Poppins;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  padding: 0.6rem;
 }
