@@ -61,8 +61,8 @@ export class AuthService {
     }
   }
 
-  async getUser() {
-    return await this.auth.currentUser;
+  getUser() {
+    return this.auth.currentUser;
   }
 }
 

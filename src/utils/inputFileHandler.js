@@ -1,4 +1,5 @@
 import imageCompression from "browser-image-compression";
+import conf from "../conf/conf.js";
 
 class FileHandler {
   constructor() {
@@ -72,6 +73,55 @@ class FileHandler {
     });
   }
 
+  // Function to handle the file upload
+  handleFileUpload() {
+    return new Promise((resolve, reject) => {
+      try {
+        if (this.result.success) {
+          const formData = new FormData();
+          formData.append("file", this.result.file);
+
+          fetch(conf.backendConfig.fileUploadUrl, {
+            method: "POST",
+            body: formData,
+          })
+            .then(response => {
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new Error(
+                  `Failed to upload file: ${response.statusText}`
+                );
+              }
+            })
+            .then(data => {
+              console.log("File uploaded successfully:", data);
+              resolve(data);
+            })
+            .catch(error => {
+              console.error("Error handling file upload:", error);
+              reject(error);
+            });
+        } else {
+          reject(new Error("File upload not successful"));
+        }
+      } catch (error) {
+        console.error("Error handling file upload:", error);
+        reject(error);
+      }
+    });
+  }
+
+  handleRemoveFile() {
+    // Reset the result object
+    this.result = {
+      url: null,
+      file: null,
+      success: false,
+    };
+  }
+
+  // Function to read the file data
   readFileData(file) {
     return new Promise((resolve, reject) => {
       console.log(file);

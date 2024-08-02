@@ -4,12 +4,9 @@ import Card from "./Card";
 import firebaseAuth from "../../firebase/auth";
 
 function LearningSession() {
-  // state to manage the user name
-  const [userName, setUserName] = useState("");
   // get the user name
-  firebaseAuth
-    .getUser()
-    .then(user => setUserName(user.displayName.split(" ")[0]));
+  const user = firebaseAuth.getUser();
+  const userName = user.displayName.split(" ")[0];
 
   // card content
   const cardContent = [

@@ -11,8 +11,9 @@ import ComputerScience from "../../../assets/computer_science.svg?react";
 import Grades from "../../../assets/grades.svg?react";
 import Learning from "../../../assets/learning.svg?react";
 import History from "../../../assets/history.svg?react";
+import { NavLink } from "react-router-dom";
 
-function Card({ mode = "learning", title = "learning", description }) {
+function Card({ mode = "learning", title = "learning", description, href }) {
   // get the icon based on the mode
   let ModeIcon;
   switch (mode) {
@@ -43,7 +44,7 @@ function Card({ mode = "learning", title = "learning", description }) {
     case "computer science":
       ModeIcon = ComputerScience;
       break;
-    case "grades":
+    case "test":
       ModeIcon = Grades;
       break;
     case "learning":
@@ -55,6 +56,7 @@ function Card({ mode = "learning", title = "learning", description }) {
 
   // render the card component
   return (
+    <NavLink to={href}>
     <div className="w-56 h-16 px-2 py-2 bg-Primary flex rounded-md cursor-pointer hover:border-2 hover:border-Tertiary">
       <ModeIcon className="fill-PrimarySvg w-6 h-6" />
       <div className="mx-2 w-full">
@@ -64,6 +66,7 @@ function Card({ mode = "learning", title = "learning", description }) {
         </span>
       </div>
     </div>
+    </NavLink>
   );
 }
 

@@ -4,13 +4,22 @@ import Card from "./Card/Card";
 import CloseSubNavSvg from "../../assets/navbar_close.svg?react";
 import CreateSvg from "../../assets/create.svg?react";
 
+import firebaseDB from "../../firebase/db";
+
 function SubNavbar({ isSubNavVisible, setIsSubNavVisible }) {
   // state to manage the visibility of the sub navbar
   const closeNavbar = () => {
     setIsSubNavVisible(false);
   };
-
+  // if the sub navbar is not visible, return null
   if (isSubNavVisible == false) return null;
+
+  const [sessions, setSessions] = useState([]);
+  // get the sessions from the database
+  firebaseDB.getSessions().then(sessions => {
+    console.log(sessions);
+    setSessions(sessions);
+  });
 
   // render the sub navbar component
   return (
@@ -28,8 +37,19 @@ function SubNavbar({ isSubNavVisible, setIsSubNavVisible }) {
 
         {/* Session history container */}
         <div className="w-full h-full flex flex-col items-center gap-2 pb-14 Add-Scrollbar">
-          <Card description="Yes, I will help you to solve Physics problems" />
-          <Card
+          {sessions.map(session => {
+            return (
+              <Card
+                key={session.id}
+                mode={session.sessionType}
+                title={session.sessionType}
+                description={session.prompt}
+                href={`/${session.sessionType}?=${session.id}`}
+              />
+            );
+          })}
+
+          {/* <Card
             mode="mathematics"
             title="mathematics"
             description="Sure, I will help to with solving Math problems"
@@ -50,8 +70,8 @@ function SubNavbar({ isSubNavVisible, setIsSubNavVisible }) {
             description="Yes, I will help you to solve Physics problems"
           />
           <Card
-            mode="computer science"
-            title="computer science"
+            mode="computerScience"
+            title="computerScience"
             description="Yes, I will help you to solve Physics problems"
           />
           <Card
@@ -75,14 +95,14 @@ function SubNavbar({ isSubNavVisible, setIsSubNavVisible }) {
             description="Yes, I will help you to solve Physics problems"
           />
           <Card
-            mode="grades"
-            title="grades"
+            mode="test"
+            title="test"
             description="Yes, I will help you to solve Physics problems"
           />
-          <Card description="Yes, I will help you to solve Physics problems" />
+          <Card description="Yes, I will help you to solve Physics problems" /> */}
         </div>
       </div>
-      
+
       <div className="bg-slate-700 Sub-Navbar-Bg" onClick={closeNavbar}></div>
     </>
   );
