@@ -1,20 +1,15 @@
-import React, { useState } from "react";
-import "./LearningSession.css";
+import React, { useContext } from "react";
 import Card from "./Card";
-import firebaseAuth from "../../firebase/auth";
+
+import expertDetail from "../../utils/expertDetail";
+import { SessionContext } from "../../context/SessionContext";
 
 function LearningSession() {
   // get the user name
-  const user = firebaseAuth.getUser();
+  const { user } = useContext(SessionContext);
   const userName = user.displayName.split(" ")[0];
 
-  // card content
-  const cardContent = [
-    "Help understand blockchain technology.",
-    "Help understand Quantum Mechanics.",
-    "Help write a short story.",
-    "Help me solve algebric problem",
-  ];
+  const { desc, cardContent } = expertDetail("learning");
 
   // render the learning session component
   return (
@@ -22,11 +17,9 @@ function LearningSession() {
       <div className="w-full h-auto md:w-3/4">
         <div className="mt-12 mb-12 pl-5 pr-5">
           <p className="text-6xl md:7xl Heading">
-            Hello, <span>{userName !== "" ? userName : "Dev"}.</span>
+            Hello, <span>{userName !== "" ? userName : "Buddy"}.</span>
           </p>
-          <p className="text-xl md:text-4xl Sub-Heading">
-            How can I help you today?
-          </p>
+          <p className="text-xl p-1 md:text-4xl Sub-Heading">{desc}</p>
         </div>
 
         {/*Card container */}

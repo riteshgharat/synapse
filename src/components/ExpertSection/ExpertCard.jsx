@@ -2,8 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import expertDetail from "../../utils/expertDetail";
 
-function ExpertCard({ expertId}) {
- // get the expert details
+function ExpertCard({ expertId }) {
+  // get the expert details
   const { expertIcon, expert, title, desc } = expertDetail(expertId);
 
   // render the expert card

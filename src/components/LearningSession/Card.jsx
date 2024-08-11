@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SessionContext } from "../../context/SessionContext";
+import { handleSubmit } from "../InputBar/InputBar";
+function Card({ content }) {
+  const { setPrompt } = useContext(SessionContext);
 
-function Card({content}) {
   // render the card component
   return (
-    <button className="w-36 h-28 p-2 border-2 border-Tertiary flex-shrink-0 rounded-2xl cursor-pointer hover:bg-Secondary">
-      <span className="font-medium text-sm text-PrimaryText">
-        {content}
-      </span>
+    <button
+      className="w-36 h-28 p-2 border-2 border-Tertiary flex-shrink-0 rounded-2xl cursor-pointer hover:bg-Secondary"
+      onClick={e => {
+        setPrompt(content);
+        handleSubmit();
+      }}
+    >
+      <span className="font-medium text-sm text-PrimaryText">{content}</span>
     </button>
   );
 }

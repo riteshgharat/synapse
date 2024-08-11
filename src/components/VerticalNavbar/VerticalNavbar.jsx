@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
-import logo from "../../assets/Logo.png";
+import logo from "/logo.png";
 import LearningSVG from "../../assets/learning.svg?react";
 import TuitionSVG from "../../assets/tution.svg?react";
-import TestSVG from "../../assets/test.svg?react";
 import UserSVG from "../../assets/user.svg?react";
 import LogoutSVG from "../../assets/logout.svg?react";
 
 import firebaseAuth from "../../firebase/auth";
 
-function VerticalNavbar({ userData }) {
+import { SessionContext } from "../../context/SessionContext";
+
+function VerticalNavbar() {
+  const { user } = useContext(SessionContext);
+
   // state to manage the display of the user profile
   const [displayUserProfile, setdisplayUserProfile] = useState(false);
 
   // get the user data
-  const userAvtar = userData.photoURL;
+  const userAvtar = user.photoURL;
   const navigate = useNavigate();
 
   // function to handle the sign-out
@@ -24,7 +27,7 @@ function VerticalNavbar({ userData }) {
       const state = await firebaseAuth.logout();
       if (state) navigate("auth/signup");
     } catch (error) {
-      console.log("Error during sign-out:", error);
+      console.error("Error during sign-out:", error);
     }
   }
 
@@ -58,14 +61,6 @@ function VerticalNavbar({ userData }) {
         >
           <TuitionSVG className="h-9 w-9 px-2 py-2" />
         </NavLink>
-        <NavLink
-          to="/app/test"
-          className={({ isActive }) =>
-            `rounded-[10px] fill-SecondarySvg hover:scale-110 ${isActive ? "bg-Quinary" : "bg-Quaternary"}`
-          }
-        >
-          <TestSVG className="h-9 w-9 px-2 py-2" />
-        </NavLink>
 
         {/* just empty space container */}
         <div className="hidden md:block h-[30vh]"></div>
@@ -74,7 +69,7 @@ function VerticalNavbar({ userData }) {
         {!userAvtar ? (
           <UserSVG className="h-9 w-9 fill-SecondarySvg rounded-[10px] bg-Quaternary px-2 py-2" />
         ) : (
-          <button
+          <span
             onClick={() => setdisplayUserProfile(!displayUserProfile)}
             className="relative"
           >
@@ -83,11 +78,11 @@ function VerticalNavbar({ userData }) {
               className={`${displayUserProfile ? "flex" : "hidden"} min-w-52 max-w-60 h-auto flex-col p-2 gap-1 absolute right-0 bottom-16 md:right-auto md:left-14 md:bottom-0 bg-Secondary rounded-md border-2 border-Tertiary overflow-hidden text-left`}
             >
               <span className="text-PrimaryText text-wrap break-words">
-                {userData.displayName}
+                {user.displayName}
               </span>
               <div className="h-[1px] bg-Tertiary hidden md:block">&nbsp;</div>
               <span className="text-PrimaryText text-wrap break-words">
-                {userData.email}
+                {user.email}
               </span>
               <div className="h-[1px] bg-Tertiary md:hidden">&nbsp;</div>
               <button
@@ -103,7 +98,7 @@ function VerticalNavbar({ userData }) {
               alt="User Profile"
               className="h-9 w-9 fill-SecondarySvg rounded-full bg-Quaternary bg-cover border-2 border-Quaternary hover:scale-110"
             />
-          </button>
+          </span>
         )}
 
         {/* Logout button for lg screens*/}

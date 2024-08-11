@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import OpenNavbarSvg from "../../assets/navbar_open.svg?react";
 import DarkModeToggle from "./DarkModeToggle/DarkModeToggler";
 
-function TopNavbar({ isSubNavVisible, setIsSubNavVisible }) {
+import { SessionContext } from "../../context/SessionContext";
+
+function TopNavbar() {
+  const { isSubNavVisible, setIsSubNavVisible } = useContext(SessionContext);
+
   // check if the sub navbar is visible or not
   let visibleOpenNavBtn = "none";
   if (!isSubNavVisible) visibleOpenNavBtn = "block";
@@ -19,7 +23,7 @@ function TopNavbar({ isSubNavVisible, setIsSubNavVisible }) {
       <h1 className="w-full m-3 text-xl text-PrimaryText text-left font-normal">
         Synapse AI
       </h1>
-        <DarkModeToggle />
+      <DarkModeToggle />
     </div>
   );
 }

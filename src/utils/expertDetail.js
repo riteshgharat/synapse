@@ -6,11 +6,23 @@ import Literature from "../assets/experts/literature.jpg";
 import Engineering from "../assets/experts/engineering.jpg";
 import ComputerScience from "../assets/experts/computer-science.jpg";
 import History from "../assets/experts/history.jpg";
-//import Economics from "../assets/experts/economics.jpg";
+import Logo from "/logo.png";
 
 function expertDetail(expertId) {
   let expertIcon, expert, title, desc, cardContent;
   switch (expertId) {
+    case "learning":
+      expertIcon = Logo;
+      expert = "learning";
+      title = "Learning";
+      desc = "Let's learn something new today!";
+      cardContent = [
+        "Help understand blockchain technology",
+        "Help understand Quantum Mechanics",
+        "Help write a short story",
+        "Help me solve algebric problem",
+      ];
+      break;
     case "mathematics":
       expertIcon = Mathematics;
       expert = "mathematics";
@@ -71,18 +83,6 @@ function expertDetail(expertId) {
         "Discuss the symbolism in 'The Great Gatsby'",
       ];
       break;
-    // case "language":
-    //   expertIcon = Language;
-    //   expert = "language";
-    //   title = "Language";
-    //   desc = "I will help you to understand language related concepts";
-    //   break;
-    // case "economics":
-    //   expertIcon = Economics;
-    //   expert = "economics";
-    //   title = "Economics";
-    //   desc = "I will help you to understand economics related concepts";
-    //   break;
     case "history":
       expertIcon = History;
       expert = "history";

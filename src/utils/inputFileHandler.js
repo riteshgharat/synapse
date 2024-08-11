@@ -95,7 +95,7 @@ class FileHandler {
               }
             })
             .then(data => {
-              console.log("File uploaded successfully:", data);
+              //console.log("File uploaded successfully:");
               resolve(data);
             })
             .catch(error => {
@@ -112,6 +112,7 @@ class FileHandler {
     });
   }
 
+  // Function to remove the file
   handleRemoveFile() {
     // Reset the result object
     this.result = {
@@ -124,7 +125,7 @@ class FileHandler {
   // Function to read the file data
   readFileData(file) {
     return new Promise((resolve, reject) => {
-      console.log(file);
+      //console.log(file);
       if (file) {
         if (file.size < 2 * 1024 * 1024) {
           // Check if the file size is less than 2MB
@@ -138,50 +139,13 @@ class FileHandler {
           };
           reader.readAsDataURL(file); // Read the file as a data URL
         } else {
-          // alert("File is too large. Please select a file less than 2MB.");
-          // reject(new Error("File is too large"));
-          this.compressImage(file)
-            .then(compressedFile => {
-              console.log(compressedFile);
-              const reader = new FileReader();
-              reader.onload = loadEvent => {
-                resolve(loadEvent.target.result); // Resolve the promise with the file data URL
-              };
-              reader.onerror = error => {
-                reject(error); // Reject the promise if there's an error
-              };
-              reader.readAsDataURL(compressedFile); // Read the file as a data URL
-            })
-            .catch(error => {
-              reject(error); // Reject the promise if there's an error
-            });
+          alert("File is too large. Please select a file less than 2MB.");
+          reject(new Error("File is too large")); // Reject the promise if the file is too large
         }
       } else {
         reject(new Error("No file selected")); // Reject the promise if no file is selected
       }
     });
-  }
-
-  // Function to compress the image
-  async compressImage(file, maxSizeMB = 2) {
-    const options = {
-      maxSizeMB: maxSizeMB,
-      useWebWorker: true,
-    };
-
-    try {
-      const compressedFile = await imageCompression(file, options);
-      console.log(compressedFile);
-
-      if (compressedFile.size / 1024 / 1024 < 2) {
-        return compressedFile;
-      } else {
-        alert("Compressed image is still larger than 2MB");
-      }
-    } catch (error) {
-      console.error("Error compressing image:", error);
-      throw error;
-    }
   }
 }
 

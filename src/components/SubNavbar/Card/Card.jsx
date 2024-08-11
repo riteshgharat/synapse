@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 
 import Mathematics from "../../../assets/math.svg?react";
 import Physics from "../../../assets/physics.svg?react";
@@ -8,12 +8,21 @@ import Literature from "../../../assets/literature.svg?react";
 import Language from "../../../assets/language.svg?react";
 import Economics from "../../../assets/economics.svg?react";
 import ComputerScience from "../../../assets/computer_science.svg?react";
-import Grades from "../../../assets/grades.svg?react";
+import Engineering from "../../../assets/engineering.svg?react";
 import Learning from "../../../assets/learning.svg?react";
 import History from "../../../assets/history.svg?react";
-import { NavLink } from "react-router-dom";
+
+import RemoveIcon from "../../../assets/remove.svg?react";
+import firebaseDB from "../../../firebase/db";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
+import { SessionContext } from "../../../context/SessionContext";
+import ConfirmDialog from "../../ConfirmDialog/ConfirmDialog";
 
 function Card({ mode = "learning", title = "learning", description, href }) {
+  const { setIsSubNavVisible } = useContext(SessionContext);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   // get the icon based on the mode
   let ModeIcon;
   switch (mode) {
@@ -41,11 +50,11 @@ function Card({ mode = "learning", title = "learning", description, href }) {
     case "history":
       ModeIcon = History;
       break;
-    case "computer science":
+    case "computer-science":
       ModeIcon = ComputerScience;
       break;
-    case "test":
-      ModeIcon = Grades;
+    case "engineering":
+      ModeIcon = Engineering;
       break;
     case "learning":
       ModeIcon = Learning;
@@ -53,19 +62,64 @@ function Card({ mode = "learning", title = "learning", description, href }) {
     default:
       ModeIcon = Learning;
   }
+  title = title.replace(/-s/g, " S"); // for computer science
+
+  function removeSession() {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this session?"
+    );
+    if (!confirm) return;
+
+    firebaseDB.deleteSession(href.split("/").pop()).then(e => {
+      if (pathname === href) navigate("/app/learning");
+    });
+  }
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleDelete = () => {
+    // Perform delete action
+    console.log("Deleted");
+
+    firebaseDB.deleteSession(href.split("/").pop()).then(e => {
+      if (pathname === href) navigate("/app/learning");
+    });
+
+    setIsDialogOpen(false);
+  };
 
   // render the card component
   return (
-    <NavLink to={href}>
-    <div className="w-56 h-16 px-2 py-2 bg-Primary flex rounded-md cursor-pointer hover:border-2 hover:border-Tertiary">
-      <ModeIcon className="fill-PrimarySvg w-6 h-6" />
-      <div className="mx-2 w-full">
-        <h2>{title.charAt(0).toUpperCase() + title.slice(1, 17)}</h2>
-        <span className="w-full text-xs break-words">
-          {description.slice(0, 32)}...
-        </span>
+    <NavLink
+      to={href}
+      onClick={() =>
+        window.innerWidth <= 768 && isDialogOpen ? setIsSubNavVisible(false) : null
+      }
+    >
+      <div
+        className={`w-56 h-16 px-2 py-2 bg-Primary flex rounded-md cursor-pointer hover:border-2 hover:border-Tertiary ${pathname === href ? "border-2 border-Tertiary" : ""}`}
+      >
+        <ModeIcon className="fill-PrimarySvg w-6 h-6" />
+        <div className="mx-2 w-full flex flex-col">
+          <div className="inline-flex justify-between items-center">
+            <h2>{title.charAt(0).toUpperCase() + title.slice(1, 17)}</h2>
+            <RemoveIcon
+              className="fill-PrimarySvg w-4 h-4"
+              onClick={() => setIsDialogOpen(true)}
+            />
+            <ConfirmDialog
+              isOpen={isDialogOpen}
+              onClose={() => setIsDialogOpen(false)}
+              onConfirm={handleDelete}
+              title="Delete chat?"
+              message="This will delete you Chat Session"
+            />
+          </div>
+          <span className="max-w-full text-xs break-words">
+            {description.slice(0, 27)}...
+          </span>
+        </div>
       </div>
-    </div>
     </NavLink>
   );
 }

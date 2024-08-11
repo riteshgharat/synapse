@@ -3,7 +3,8 @@ import {
   getFirestore,
   doc,
   setDoc,
-  getDocs,
+  query,
+  orderBy,
   updateDoc,
   deleteDoc,
   collection,
@@ -17,12 +18,11 @@ export class DBService {
   }
 
   // Firestore services
+  // create a new session
   async createSession(sessionData) {
-    let userId = this.getuserId(); // get the user ID
-    console.log("User ID:", userId);
+    let userId = this.getUserId(); // get the user ID
+
     try {
-      //await setDoc(doc(this.database, this.userId, sessionId), sessionData);
-      //return true;
       const docRef = doc(collection(this.database, userId)); // Automatically generates a unique ID
       await setDoc(docRef, sessionData); // Set the data
       return docRef; // Return the generated ID
@@ -32,45 +32,62 @@ export class DBService {
     }
   }
 
-  async getSession(sessionId) {
-    let userId = this.getuserId(); // get the user ID
-    console.log("User ID:", userId);
+  // get a session
+  getSession(sessionId, callback) {
+    let userId = this.getUserId(); // get the user ID
+
     try {
       const docRef = doc(this.database, userId, sessionId); // Reference to the specific document
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        return docSnap.data();
-      } else {
-        return null;
-      }
+      onSnapshot(
+        docRef,
+        docSnap => {
+          if (docSnap.exists()) {
+            callback(docSnap.data());
+          } else {
+            callback(null);
+          }
+        },
+        error => {
+          console.error("Get Session :: error", error);
+          callback(false);
+        }
+      );
     } catch (error) {
       console.error("Get Session :: error", error);
-      return false;
+      callback(false);
     }
   }
 
-  async getSessions() {
-    let userId = this.getuserId(); // get the user ID
-    console.log("User ID:", userId);
+  // get all sessions
+  getSessions(userId, callback) {
     try {
       const collectionRef = collection(this.database, userId); // Reference to the user's collection
-      const querySnapshot = await getDocs(collectionRef); // Get all documents in the collection
-      const sessions = querySnapshot.docs.map(doc => doc.data()); // Map each document to its data
+      const orderedQuery = query(collectionRef, orderBy("history", "asc")); // Order by 'asc' field in descending order
 
-      // Add the document ID to the data
-      for (let i = 0; i < sessions.length; i++) {
-        sessions[i].id = querySnapshot.docs[i].id; // Add the document ID to the data
-      }
-
-      return sessions; // Return the array of session data
+      onSnapshot(
+        orderedQuery, // Use the ordered query instead of the collection reference
+        querySnapshot => {
+          const sessions = querySnapshot.docs.map(doc => {
+            let data = doc.data();
+            data.id = doc.id; // Add the document ID to the data
+            return data;
+          });
+          callback(sessions); // Return the array of session data
+        },
+        error => {
+          console.error("Get Sessions :: error", error);
+          callback(false);
+        }
+      );
     } catch (error) {
-      console.error("Get Session :: error", error);
-      return false;
+      console.error("Get Sessions :: error", error);
+      callback(false);
     }
   }
 
+  // update a session
   async updateSession(sessionId, updatedData) {
-    let userId = this.getuserId(); // get the user ID
+    let userId = this.getUserId(); // get the user ID
     try {
       await updateDoc(doc(this.database, userId, sessionId), updatedData);
       return true;
@@ -80,8 +97,9 @@ export class DBService {
     }
   }
 
+  // delete a session
   async deleteSession(sessionId) {
-    let userId = this.getuserId(); // get the user ID
+    let userId = this.getUserId(); // get the user ID
     try {
       await deleteDoc(doc(this.database, userId, sessionId));
       return true;
@@ -91,7 +109,8 @@ export class DBService {
     }
   }
 
-  getuserId() {
+  // get user id
+  getUserId() {
     let user = firebaseAuth.getUser();
     return user.uid;
   }
