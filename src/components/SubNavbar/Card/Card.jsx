@@ -79,8 +79,6 @@ function Card({ mode = "learning", title = "learning", description, href }) {
 
   const handleDelete = () => {
     // Perform delete action
-    console.log("Deleted");
-
     firebaseDB.deleteSession(href.split("/").pop()).then(e => {
       if (pathname === href) navigate("/app/learning");
     });

@@ -74,7 +74,7 @@ function ChatWindow() {
           if (data) {
             // if file is uploaded
             const userMessage =
-              fileResult.success && data
+              fileResult && fileResult.success
                 ? { text: prompt, image: fileResult }
                 : { text: prompt };
 

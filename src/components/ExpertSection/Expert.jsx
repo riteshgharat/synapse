@@ -32,7 +32,7 @@ function Expert() {
             className="w-36 h-28 p-2 border-2 border-Tertiary flex-shrink-0 rounded-lg cursor-pointer hover:bg-Secondary"
             onClick={e => {
               setPrompt(content);
-              handleSubmit();
+              handleSubmit(e); // handle the submit event and sending textContent
             }}
           >
             <span className="font-medium text-sm text-PrimaryText">

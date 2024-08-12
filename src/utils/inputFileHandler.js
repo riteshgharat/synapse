@@ -127,7 +127,7 @@ class FileHandler {
     return new Promise((resolve, reject) => {
       //console.log(file);
       if (file) {
-        if (file.size < 2 * 1024 * 1024) {
+        if (file.size < 1 * 1024 * 1024) {
           // Check if the file size is less than 2MB
           // Use FileReader to read the file's data URL
           const reader = new FileReader();
@@ -139,7 +139,7 @@ class FileHandler {
           };
           reader.readAsDataURL(file); // Read the file as a data URL
         } else {
-          alert("File is too large. Please select a file less than 2MB.");
+          alert("File is too large. Please select a file less than 1MB.");
           reject(new Error("File is too large")); // Reject the promise if the file is too large
         }
       } else {

@@ -65,10 +65,10 @@ function InputBar() {
 
   handleSubmit = useCallback(
     async e => {
-      //e.preventDefault();
+      e.preventDefault();
       const backendSession = {
         sessionType: sesType,
-        prompt: prompt,
+        prompt: e.target.textContent || prompt,
         imageOrigin: fileData?.origin || null,
         history: sessionHistory,
       };

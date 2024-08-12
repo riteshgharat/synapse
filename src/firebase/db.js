@@ -9,6 +9,7 @@ import {
   deleteDoc,
   collection,
   onSnapshot,
+  serverTimestamp,
 } from "firebase/firestore";
 import firebaseAuth from "./auth.js";
 
@@ -20,10 +21,13 @@ export class DBService {
   // Firestore services
   // create a new session
   async createSession(sessionData) {
-    let userId = this.getUserId(); // get the user ID
-
+    let userId = this.getUserId(); // Get the user ID
     try {
       const docRef = doc(collection(this.database, userId)); // Automatically generates a unique ID
+
+      // Add createdAt and updatedAt timestamps to the session data
+      sessionData.createdAt = serverTimestamp();
+
       await setDoc(docRef, sessionData); // Set the data
       return docRef; // Return the generated ID
     } catch (error) {
@@ -62,7 +66,7 @@ export class DBService {
   getSessions(userId, callback) {
     try {
       const collectionRef = collection(this.database, userId); // Reference to the user's collection
-      const orderedQuery = query(collectionRef, orderBy("history", "asc")); // Order by 'asc' field in descending order
+      const orderedQuery = query(collectionRef, orderBy("createdAt", "desc")); // Order by 'asc' field in descending order
 
       onSnapshot(
         orderedQuery, // Use the ordered query instead of the collection reference

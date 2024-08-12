@@ -35,7 +35,7 @@ function SubNavbar() {
 
         {/* Session history container */}
         <div className="w-full h-full flex flex-col items-center gap-2 pb-14 Add-Scrollbar">
-          {ChatSessions.length !== 0 ? (
+          {ChatSessions && ChatSessions.length !== 0 ? (
             ChatSessions.map(session => {
               return (
                 <Card
