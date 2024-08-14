@@ -1,4 +1,10 @@
-import React, { useContext, useRef, useEffect, useCallback } from "react";
+import React, {
+  useContext,
+  useRef,
+  useEffect,
+  useCallback,
+  useState,
+} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import socket from "../../socket/socket";
 import AddImgSvg from "../../assets/add_images.svg?react";
@@ -12,6 +18,8 @@ import { SessionContext } from "../../context/SessionContext";
 let handleSubmit;
 
 function InputBar() {
+  const [fileAlert, setFileAlert] = useState(false);
+
   const navigate = useNavigate();
   const {
     prompt,
@@ -22,6 +30,7 @@ function InputBar() {
     activeSession,
     setActiveSession,
   } = useContext(SessionContext);
+
   const textareaRef = useRef(null);
   const { expertId, sessionId } = useParams();
   const sesType = expertId || "learning";
@@ -49,9 +58,11 @@ function InputBar() {
         if (result.success) {
           setFileData(result);
         } else {
+          setFileAlert(true);
           console.error(`Error handling ${operation} file`);
         }
       } catch (error) {
+        setFileAlert(true);
         console.error(`Error handling ${operation} file:`, error);
       }
     },
@@ -60,6 +71,7 @@ function InputBar() {
 
   const handleRemoveImage = useCallback(() => {
     setFileData({ url: null, file: null, success: false });
+    setFileAlert(false);
     fileHandler.handleRemoveFile();
   }, [setFileData]);
 
@@ -69,18 +81,22 @@ function InputBar() {
       const backendSession = {
         sessionType: sesType,
         prompt: e.target.textContent || prompt,
-        imageOrigin: fileData?.origin || null,
+        imageOrigin: null,
         history: sessionHistory,
       };
+
+      if (textareaRef.current.value === "") return;
 
       if (fileData?.success) {
         try {
           const result = await fileHandler.handleFileUpload();
           backendSession.imageOrigin = result.origin; // set image origin
 
-          setFileData(prev => ({ ...prev, origin: result.origin }));
-          socket.emit("generate", backendSession);
-          socket.emit("upload", result.origin);
+          if (result) {
+            setFileData(prev => ({ ...prev, origin: result.origin }));
+            socket.emit("generate", backendSession);
+            socket.emit("upload", result.origin);
+          }
         } catch (error) {
           console.error("Error handling file upload:", error);
         }
@@ -113,19 +129,27 @@ function InputBar() {
   return (
     <div className="w-full flex flex-col justify-center items-center bg-Primary p-4">
       <div
-        className={`${fileData?.success ? "flex" : "hidden"} w-full md:w-3/4 px-4 py-2 flex items-center rounded-md gap-4 relative top-2 bg-Secondary`}
+        className={`${fileAlert || fileData.success ? "flex" : "hidden"} w-full md:w-3/4 px-4 py-2 items-center rounded-md gap-4 relative top-2 bg-Secondary`}
       >
-        <div
-          className="w-16 h-16 rounded-lg bg-cover bg-center"
-          style={{ backgroundImage: `url(${fileData?.url})` }}
-        >
-          <button className="w-16 h-16 rounded-lg bg-slate-700 opacity-0 hover:opacity-80 cursor-default">
-            <CloseSvg
-              onClick={handleRemoveImage}
-              className="w-4 ml-6 fill-SecondarySvg"
-            />
-          </button>
-        </div>
+        {fileData && fileData.url ? (
+          <div
+            className="w-16 h-16 rounded-lg bg-cover bg-center"
+            style={{ backgroundImage: `url(${fileData?.url})` }}
+          >
+            <button className="w-16 h-16 rounded-lg bg-slate-700 opacity-0 hover:opacity-80 cursor-default">
+              <CloseSvg
+                onClick={handleRemoveImage}
+                className="w-4 ml-6 fill-SecondarySvg"
+              />
+            </button>
+          </div>
+        ) : (
+          fileAlert && (
+            <span className="w-full text-red-400 text-center">
+              (File Size must be less than 1 MB)
+            </span>
+          )
+        )}
       </div>
       <div
         className="w-full md:w-3/4 px-4 py-2 flex items-center rounded-md gap-4 bg-Secondary"
@@ -142,6 +166,11 @@ function InputBar() {
             }
             onChange={e => {
               setPrompt(e.target.value);
+            }}
+            onKeyDown={e => {
+              if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+                handleSubmit(e);
+              }
             }}
           />
         </form>

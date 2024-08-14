@@ -1,4 +1,5 @@
 # Synapse AI
+![Synapse AI](./public/logo.png)
 
 ## Introduction
 

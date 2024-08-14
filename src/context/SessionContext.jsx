@@ -12,7 +12,7 @@ export const SessionProvider = ({ children }) => {
   const [promptFromCard, setPromptFromCard] = useState("");
   const [response, setResponse] = useState("");
   const [fileResult, setFileResult] = useState(null);
-  const [fileData, setFileData] = useState(null);
+  const [fileData, setFileData] = useState({ url: null, file: null, success: false });
   const [activeSession, setActiveSession] = useState({
     sessionId: 0,
     isActive: false,

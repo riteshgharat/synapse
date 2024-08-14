@@ -139,7 +139,7 @@ class FileHandler {
           };
           reader.readAsDataURL(file); // Read the file as a data URL
         } else {
-          alert("File is too large. Please select a file less than 1MB.");
+          //alert("File is too large. Please select a file less than 1MB.");
           reject(new Error("File is too large")); // Reject the promise if the file is too large
         }
       } else {
