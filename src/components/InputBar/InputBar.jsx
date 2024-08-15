@@ -74,7 +74,6 @@ function InputBar() {
     setFileAlert(false);
     fileHandler.handleRemoveFile();
   }, [setFileData]);
-
   handleSubmit = useCallback(
     async e => {
       e.preventDefault();
@@ -85,7 +84,7 @@ function InputBar() {
         history: sessionHistory,
       };
 
-      if (textareaRef.current.value === "") return;
+      if (textareaRef.current.value === "" && e.target.textContent === "") return;
 
       if (fileData?.success) {
         try {
