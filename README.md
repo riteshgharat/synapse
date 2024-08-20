@@ -1,9 +1,11 @@
 # Synapse AI
-![Synapse AI](./public/logo.png)
+![Synapse AI](https://raw.githubusercontent.com/riteshgharat/synapse/main/public/logo.png)
 
 ## Introduction
 
 Synapse AI is an innovative web application designed to transform personalized tutoring by leveraging the power of artificial intelligence. This platform aims to provide students with high-quality, tailored educational support, available anytime and anywhere, helping to ignite curiosity and foster a lifelong love for learning.
+
+[![YouTube](http://i.ytimg.com/vi/52L7ycKHFFY/hqdefault.jpg)](https://www.youtube.com/watch?v=52L7ycKHFFY)
 
 ## About the Project
 
